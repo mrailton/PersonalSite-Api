@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use App\Models\Article;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class ArticleSeeder extends Seeder
 {
     public function run(): void
     {
-        $this->call(UserSeeder::class);
-        $this->call(ArticleSeeder::class);
+        Article::factory()->count(15)->create();
     }
 }
