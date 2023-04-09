@@ -28,4 +28,11 @@ class ArticleResource extends JsonApiResource
             'updated_at' => $this->updated_at,
         ];
     }
+
+    public function toRelationships(Request $request): array
+    {
+        return [
+            'author' => fn () => new UserResource($this->author),
+        ];
+    }
 }
