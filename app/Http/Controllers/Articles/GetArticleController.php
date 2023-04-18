@@ -12,9 +12,9 @@ use function abort;
 
 class GetArticleController
 {
-    public function __invoke(Request $request, string $uuid): JsonResource
+    public function __invoke(Request $request, string $uuidOrSlug): JsonResource
     {
-        $article = Article::query()->where('uuid', '=', $uuid)->first();
+        $article = Article::query()->where('uuid', '=', $uuidOrSlug)->orWhere('slug', '=', $uuidOrSlug)->first();
 
         if (!$article) {
             abort(404);

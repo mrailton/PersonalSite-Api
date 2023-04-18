@@ -16,12 +16,12 @@ Route::post('/auth/authenticate', AuthenticateUserController::class);
 
 Route::prefix('/articles')->group(function () {
     Route::get('/', ListArticlesController::class);
+    Route::get('/{uuid}', GetArticleController::class);
 });
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('/articles')->group(function () {
         Route::post('/', StoreArticleController::class);
-        Route::get('/{uuid}', GetArticleController::class);
         Route::put('/{uuid}', UpdateArticleController::class);
     });
 });

@@ -13,7 +13,7 @@ class ListArticlesController
 {
     public function __invoke(Request $request): JsonResource
     {
-        if (auth()->check()) {
+        if (auth('sanctum')->check()) {
             $articles = Article::all();
         } else {
             $articles = Article::query()->where('published_at', '<=', now())->get();

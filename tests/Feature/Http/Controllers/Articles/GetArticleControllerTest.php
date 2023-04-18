@@ -6,9 +6,18 @@ use App\Models\Article;
 use App\Models\User;
 use Illuminate\Support\Str;
 
-test('an authenticated user can get an article', function () {
+test('any user can get an article by uuid', function () {
     $article = Article::inRandomOrder()->first();
-    $res = $this->actingAs(User::first())->getJson('/articles/' . $article->uuid);
+    $res = $this->getJson('/articles/' . $article->uuid);
+
+    $res->assertStatus(200)
+        ->assertJsonPath('data.title', $article->title)
+        ->assertJsonPath('data.content', $article->content);
+});
+
+test('any user can get an article by slug', function () {
+    $article = Article::inRandomOrder()->first();
+    $res = $this->getJson('/articles/' . $article->slug);
 
     $res->assertStatus(200)
         ->assertJsonPath('data.title', $article->title)
