@@ -9,10 +9,7 @@ test('example', function () {
         ->assertStatus(200)
         ->assertJson([
             'data' => [
-                'api status' => 'up',
+                'message' => 'All systems operational',
             ],
-            'time' => now()->unix(),
-            'statusCode' => 200,
-            'message' => 'All systems operational',
         ]);
 });

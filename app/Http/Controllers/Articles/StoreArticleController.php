@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Articles;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Articles\StoreArticleRequest;
 use App\Http\Resources\ArticleResource;
 use Carbon\Carbon;
-use TiMacDonald\JsonApi\JsonApiResource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class StoreArticleController extends Controller
+class StoreArticleController
 {
-    public function __invoke(StoreArticleRequest $request): JsonApiResource
+    public function __invoke(StoreArticleRequest $request): JsonResource
     {
         $publishAt = Carbon::createFromTimeString($request->validated('published_at'))
             ->format('Y-m-d H:i:s');

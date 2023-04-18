@@ -11,7 +11,7 @@ test('an authenticated user can update an article', function () {
     $res = $this->actingAs(User::first())->putJson('/articles/' . $article->uuid, ['title' => 'Updated Article', 'content' => $article->content, 'published_at' => $article->published_at]);
 
     $res->assertStatus(200)
-        ->assertJsonPath('data.attributes.title', 'Updated Article');
+        ->assertJsonPath('data.title', 'Updated Article');
 });
 
 test('an article can not be updated if it does not exist', function () {

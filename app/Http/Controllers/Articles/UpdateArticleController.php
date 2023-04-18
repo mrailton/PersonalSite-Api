@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Articles;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Articles\StoreArticleRequest;
 use App\Http\Resources\ArticleResource;
 use App\Models\Article;
-use TiMacDonald\JsonApi\JsonApiResource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class UpdateArticleController extends Controller
+class UpdateArticleController
 {
-    public function __invoke(StoreArticleRequest $request, string $uuid): JsonApiResource
+    public function __invoke(StoreArticleRequest $request, string $uuid): JsonResource
     {
         $article = Article::query()->where('uuid', '=', $uuid)->first();
 

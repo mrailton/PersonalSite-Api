@@ -13,7 +13,7 @@ test('an authenticated user can get a list of all articles', function () {
     $response
         ->assertStatus(200)
         ->assertJsonCount(15, 'data')
-        ->assertJsonPath('data.0.attributes.title', $articles[0]->title);
+        ->assertJsonPath('data.0.title', $articles[0]->title);
 });
 
 test('an unauthenticated user can not get a list of articles', function () {

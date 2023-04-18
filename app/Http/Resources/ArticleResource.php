@@ -6,33 +6,22 @@ namespace App\Http\Resources;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
-use TiMacDonald\JsonApi\JsonApiResource;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
  * @mixin Article
  */
-class ArticleResource extends JsonApiResource
+class ArticleResource extends JsonResource
 {
-    public function toId(Request $request): string
-    {
-        return $this->uuid;
-    }
-
-    public function toAttributes(Request $request): array
+    public function toArray(Request $request): array
     {
         return [
+            'id' => $this->uuid,
             'title' => $this->title,
             'slug' => $this->slug,
             'content' => $this->content,
             'published_at' => $this->published_at,
             'updated_at' => $this->updated_at,
-        ];
-    }
-
-    public function toRelationships(Request $request): array
-    {
-        return [
-            'author' => fn () => new UserResource($this->author),
         ];
     }
 }
