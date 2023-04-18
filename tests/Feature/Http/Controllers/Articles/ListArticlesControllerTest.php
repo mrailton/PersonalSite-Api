@@ -17,10 +17,11 @@ test('an authenticated user can get a list of all articles', function () {
 });
 
 test('an unauthenticated user can get a list of published only articles', function () {
-    $published1 = Article::query()->inRandomOrder()->first();
-    $published2 = Article::query()->inRandomOrder()->first();
-    $unpublished1 = Article::query()->inRandomOrder()->first();
-    $unpublished2 = Article::query()->inRandomOrder()->first();
+    $articles = Article::limit(4)->get();
+    $published1 = $articles[0];
+    $published2 = $articles[1];
+    $unpublished1 = $articles[2];
+    $unpublished2 = $articles[3];
     $unpublished1->update(['published_at' => now()->addYear()]);
     $unpublished2->update(['published_at' => now()->addYear()]);
 
