@@ -13,7 +13,11 @@ class ListArticlesController
 {
     public function __invoke(Request $request): JsonResource
     {
-        $articles = Article::all();
+        if (auth()->check()) {
+            $articles = Article::all();
+        } else {
+            $articles = Article::query()->where('published_at', '<=', now())->get();
+        }
 
         return ArticleResource::collection($articles);
     }

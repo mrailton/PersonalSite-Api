@@ -19,7 +19,7 @@ class ArticleFactory extends Factory
             'title' => $title,
             'slug' => Str::slug($title),
             'content' => $this->faker->paragraphs(5, true),
-            'published_at' => $this->faker->dateTimeBetween('-3 years', '+7 days')
+            'published_at' => $this->faker->dateTimeBetween('-3 years', '-1 days')
         ];
     }
 }
