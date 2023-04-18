@@ -35,9 +35,6 @@ jobs:
       - name: Generate App Key
         run: php artisan key:generate
 
-      - name: Install NPM dependencies
-        run: npm ci
-
       - name: Execute tests
         run: php artisan test --coverage
         env:
