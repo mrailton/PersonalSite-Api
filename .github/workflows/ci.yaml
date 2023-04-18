@@ -38,9 +38,6 @@ jobs:
       - name: Install NPM dependencies
         run: npm ci
 
-      - name: Compile assets
-        run: npm run build
-
       - name: Execute tests
         run: php artisan test --coverage
         env:
