@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\Api\Articles\GetArticleController;
-use App\Http\Controllers\Api\Articles\ListArticlesController;
-use App\Http\Controllers\Api\Articles\StoreArticleController;
-use App\Http\Controllers\Api\Articles\UpdateArticleController;
-use App\Http\Controllers\Api\Auth\AuthenticateUserController;
+use App\Http\Controllers\Articles\GetArticleController;
+use App\Http\Controllers\Articles\ListArticlesController;
+use App\Http\Controllers\Articles\StoreArticleController;
+use App\Http\Controllers\Articles\UpdateArticleController;
+use App\Http\Controllers\Auth\AuthenticateUserController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/auth/authenticate', AuthenticateUserController::class);

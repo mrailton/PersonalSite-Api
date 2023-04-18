@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Models\Article;
 use App\Models\User;
 use Illuminate\Support\Str;
 
 test('an authenticated user can get an article', function () {
     $article = Article::inRandomOrder()->first();
-    $res = $this->actingAs(User::first())->getJson('/api/articles/' . $article->uuid);
+    $res = $this->actingAs(User::first())->getJson('/articles/' . $article->uuid);
 
     $res->assertStatus(200)
         ->assertJsonPath('data.attributes.title', $article->title)
@@ -15,7 +17,7 @@ test('an authenticated user can get an article', function () {
 
 test('an authenticated user can get an article with author data', function () {
     $article = Article::inRandomOrder()->first();
-    $res = $this->actingAs(User::first())->getJson('/api/articles/' . $article->uuid . '?include=author');
+    $res = $this->actingAs(User::first())->getJson('/articles/' . $article->uuid . '?include=author');
 
     $res->assertStatus(200)
         ->assertJsonPath('data.attributes.title', $article->title)
@@ -26,7 +28,7 @@ test('an authenticated user can get an article with author data', function () {
 
 test('an authenticated user can not get an article that does not exist', function () {
     $uuid = Str::uuid()->toString();
-    $res = $this->actingAs(User::first())->getJson('/api/articles/' . $uuid);
+    $res = $this->actingAs(User::first())->getJson('/articles/' . $uuid);
 
     $res->assertStatus(404);
 });

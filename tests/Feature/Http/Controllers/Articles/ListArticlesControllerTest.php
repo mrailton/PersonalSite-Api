@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Models\Article;
 use App\Models\User;
 
 test('an authenticated user can get a list of all articles', function () {
-    $response = $this->actingAs(User::first())->getJson('/api/articles');
+    $response = $this->actingAs(User::first())->getJson('/articles');
 
     $articles = Article::all();
 
@@ -15,7 +17,7 @@ test('an authenticated user can get a list of all articles', function () {
 });
 
 test('an unauthenticated user can not get a list of articles', function () {
-    $response = $this->getJson('/api/articles');
+    $response = $this->getJson('/articles');
 
     $response->assertStatus(401);
 });

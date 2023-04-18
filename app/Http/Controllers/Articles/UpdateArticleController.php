@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Api\Articles;
+namespace App\Http\Controllers\Articles;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Api\Articles\StoreArticleRequest;
+use App\Http\Requests\Articles\StoreArticleRequest;
 use App\Http\Resources\ArticleResource;
 use App\Models\Article;
 use TiMacDonald\JsonApi\JsonApiResource;
