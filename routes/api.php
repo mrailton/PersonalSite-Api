@@ -7,7 +7,11 @@ use App\Http\Controllers\Articles\ListArticlesController;
 use App\Http\Controllers\Articles\StoreArticleController;
 use App\Http\Controllers\Articles\UpdateArticleController;
 use App\Http\Controllers\Auth\AuthenticateUserController;
+use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
+use function Pest\Laravel\json;
+
+Route::get('/', IndexController::class);
 
 Route::post('/auth/authenticate', AuthenticateUserController::class);
 
